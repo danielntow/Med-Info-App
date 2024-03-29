@@ -1,14 +1,29 @@
-import React from 'react'
-import Layout from '../Layout'
+import React from 'react';
+import Layout from '../Layout';
+import { Link } from 'react-router-dom';
 
 const HomePage = () => {
     return (
-        <div className='text-5xl text-blue-600'>HomePage
-            <h1 className="text-3xl font-bold text-purple-500">
-                Hello world!
-            </h1>
-        </div>
-    )
+        <Layout>
+            <div className='text-center'>
+                <h1 className='text-5xl text-blue-600 mb-8'>Welcome to MedInfo App</h1>
+                <p className='text-lg text-gray-700 mb-6'>Your trusted source for medical information and resources.</p>
+                <img src='/images/medi.jpeg' alt='Medical' className='rounded-lg mb-8' />
+                <p className='text-lg text-gray-700 mb-6'>Explore our app to:</p>
+                <ul className='text-lg text-gray-700 mb-6'>
+                    <li>Find comprehensive information on various medical conditions and treatments.</li>
+                    <li>Access articles, research papers, and expert opinions on health-related topics.</li>
+                    <li>Stay updated on the latest medical news and breakthroughs.</li>
+                </ul>
+                <div className='mb-8'>
+                    <Link to='/conditions' className='text-lg text-blue-600 mr-4'>Browse Conditions</Link>
+                    <Link to='/articles' className='text-lg text-blue-600'>Read Articles</Link>
+                </div>
+                <p className='text-lg text-gray-700 mb-6'>Download the MedInfo app today and take control of your health!</p>
+                <button className='bg-blue-500 text-white py-2 px-6 rounded-lg hover:bg-blue-600'>Download Now</button>
+            </div>
+        </Layout>
+    );
 }
 
-export default HomePage
+export default HomePage;
