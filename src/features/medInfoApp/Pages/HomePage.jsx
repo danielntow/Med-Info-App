@@ -12,7 +12,7 @@ const HomePage = () => {
     const handleSearch = async () => {
         try {
             setLoading(true);
-            const response = await fetch(`https://your-backend-api.com/search?query=${encodeURIComponent(searchTerm)}`);
+            const response = await fetch(`https://wsearch.nlm.nih.gov/ws/query/search?query=${encodeURIComponent(searchTerm)}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch data');
             }
