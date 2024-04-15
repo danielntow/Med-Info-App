@@ -13,6 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { AuthProvider } from "app/context/AuthContext";
 import HomePage from "features/medInfoApp/Pages/HomePage.jsx"
 import PageNotFound from 'features/medInfoApp/PageNotFound';
+import DrugPage from 'features/medInfoApp/Pages/DrugPage';
 
 
 function App() {
@@ -40,7 +41,7 @@ function App() {
                   <Route>
 
                     <Route path="/" element={<HomePage />} />
-
+                    <Route path="/med-info/:drug?" element={<DrugPage />} />
                     <Route path="*" element={<PageNotFound />} />
 
 
