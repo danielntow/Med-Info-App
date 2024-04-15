@@ -13,7 +13,7 @@ const HomePage = () => {
         try {
             setLoading(true);
             const response = await axios.get(`https://apps.nlm.nih.gov/medlineplus/services/mpconnect_service.cfm?mainSearchCriteria.v.cs=2.16.840.1.113883.6.103&mainSearchCriteria.v.c=${encodeURIComponent(searchTerm)}`);
-            
+
             if (response.status !== 200) {
                 throw new Error('Failed to fetch data');
             }
