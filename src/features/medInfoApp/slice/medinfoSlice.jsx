@@ -72,4 +72,5 @@ export const drugSlice = createSlice({
     },
 });
 
+export const { } = drugSlice.actions
 export default drugSlice.reducer;
