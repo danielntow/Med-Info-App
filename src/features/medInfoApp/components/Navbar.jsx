@@ -48,7 +48,7 @@ function Navbar({ onSearch, searchTerm, setSearchTerm, handleChange }) {
                     <NavLink to="/" exact className="text-white  hover:text-gray-200">HEALTH NEWS</NavLink>
                 </li>
                 <li className="md:mr-4">
-                    <NavLink to="/drugs-diseases" className="text-white  hover:text-gray-200">ABOUT MED INFO</NavLink>
+                    <NavLink to="/about" className="text-white  hover:text-gray-200">ABOUT MED INFO</NavLink>
                 </li>
                 <li className="md:mr-4">
                     <NavLink to="/cme-education" className="text-white  hover:text-gray-200">BMI CALCULATOR</NavLink>

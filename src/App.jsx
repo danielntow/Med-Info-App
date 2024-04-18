@@ -14,6 +14,7 @@ import HomePage from "features/medInfoApp/Pages/HomePage.jsx"
 import PageNotFound from 'features/medInfoApp/PageNotFound';
 import DrugPage from 'features/medInfoApp/Pages/DrugPage';
 import { useSelector } from 'react-redux';
+import About from 'features/medInfoApp/Pages/About';
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
                 <Route>
 
                   <Route path="/" element={<HomePage />} />
+                  <Route path="/about" element={<About />} />
                   <Route path=":drugName?" element={<DrugPage />} />
                   <Route path="*" element={<PageNotFound />} />
 
