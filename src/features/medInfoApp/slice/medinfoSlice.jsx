@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+
 const baseURL = 'http://localhost:8000/api/drugs/';
 
 const initialState = {
@@ -21,7 +22,6 @@ export const getAllDrugs = createAsyncThunk(
         try {
             const response = await axios.get(baseURL);
             if (response.status === 200) {
-                console.log('RESPONSE----', response.data)
                 return response.data;
             }
         } catch (err) {
@@ -35,9 +35,9 @@ export const getDrug = createAsyncThunk(
     'medinfo/getDrug',
     async (searchTerm, { rejectWithValue }) => {
         try {
-            const response = await axios.get(`${baseURL}?search=${searchTerm}`);
+            const response = await axios.get(`${baseURL}${searchTerm}`);
             if (response.status === 200) {
-                console.log('RESPONSE----', response.data)
+                console.log('RESPONSE from getDrug----', response.data)
                 return response.data;
             }
         } catch (err) {
@@ -53,7 +53,7 @@ export const drugSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(getAllDrugs.pending, (state) => {
+            .addCase(getAllDrugs.pending, (state, action) => {
                 state.loading = true;
             })
             .addCase(getAllDrugs.fulfilled, (state, action) => {
@@ -66,10 +66,13 @@ export const drugSlice = createSlice({
             })
             .addCase(getDrug.fulfilled, (state, action) => {
                 state.loading = false;
-                state.drug = action.payload.results;
+                // state.drug.push(action.payload)
+                state.drug = action.payload;
             })
             .addCase(getDrug.rejected, handleAsyncError);
     },
 });
 
+
+// export const { } = drugSlice.actions
 export default drugSlice.reducer;

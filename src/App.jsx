@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import {
   BrowserRouter as Router,
@@ -10,10 +10,11 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { AuthProvider } from "app/context/AuthContext";
 import HomePage from "features/medInfoApp/Pages/HomePage.jsx"
 import PageNotFound from 'features/medInfoApp/PageNotFound';
 import DrugPage from 'features/medInfoApp/Pages/DrugPage';
+import { useSelector } from 'react-redux';
+import About from 'features/medInfoApp/Pages/About';
 
 
 function App() {
@@ -26,8 +27,6 @@ function App() {
   });
   const helmetContext = {};
 
-  const [message, setMessage] = useState("");
-
 
   return (
     <>
@@ -36,19 +35,21 @@ function App() {
           <QueryClientProvider client={client}>
             <ToastContainer />
             <Router>
-              <AuthProvider>
-                <Routes>
-                  <Route>
+              {/* <AuthProvider> */}
 
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/med-info/:drug?" element={<DrugPage />} />
-                    <Route path="*" element={<PageNotFound />} />
+              <Routes>
+                <Route>
+
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path=":drugName?" element={<DrugPage />} />
+                  <Route path="*" element={<PageNotFound />} />
 
 
-                  </Route>
-                </Routes>
+                </Route>
+              </Routes>
 
-              </AuthProvider>
+              {/* </AuthProvider> */}
             </Router>
           </QueryClientProvider>
         </HelmetProvider>
