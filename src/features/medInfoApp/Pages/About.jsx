@@ -3,7 +3,7 @@ import Layout from '../Layout'
 
 const About = () => {
     return (
-        <Layout>
+        <Layout title="About Us - Med Info App">
             <div className="container mx-auto px-4 py-8">
                 <h1 className="text-3xl font-semibold mb-4">About Us</h1>
                 <div className="mb-8">
@@ -34,7 +34,7 @@ const About = () => {
                     </p>
                 </div>
             </div>
-        </Layout>
+        </Layout >
     )
 }
 
