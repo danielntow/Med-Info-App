@@ -9,7 +9,7 @@ import DrugPage from "./Pages/DrugPage.jsx";
 import { useNavigate } from "react-router-dom";
 import { redirect } from "react-router-dom";
 
-const Layout = ({ children, title, content, type, name, description }) => {
+const Layout = ({ children, title = "Med Info App", content, type, name, description }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate()
     const [searchTerm, setSearchTerm] = useState("");
