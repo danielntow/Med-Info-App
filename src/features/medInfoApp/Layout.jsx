@@ -63,7 +63,7 @@ const Layout = ({ children, title, content, type, name, description }) => {
                 <meta name="twitter:description" content={description} />
             </Helmet>
             <Navbar handleChange={handleChange} searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-            <div className="grid bg-blue-50 overflow-scroll min-h-screen">
+            <div className="grid bg-blue-50  min-h-screen">
                 <div className=" mt-5">
                     {/* Render DrugPage only if condition is met */}
                     {/* {shouldRenderDrugPage && <DrugPage searchTerm={searchTerm} drug={drug} />} */}
