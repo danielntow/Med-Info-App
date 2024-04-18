@@ -1,5 +1,6 @@
 # MedInfo APP
 ### Welcome to MedInfo App, a comprehensive application for accessing medicinal information and resources.
+![Medicinal gif](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGxvYzZ3ajZsYm1mdG50d2VnaGEyYXZuZXRjcnowYjljMzF0c3V6NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MLvnSBtOExs5PoIMmc/giphy.gif)
 
 ## Features
 * Search for medical information by querying a database server.
