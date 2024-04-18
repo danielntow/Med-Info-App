@@ -1,8 +1,8 @@
 # MedInfo APP
-### Welcome to MedInfo App, a comprehensive application for accessing medical information and resources.
+### Welcome to MedInfo App, a comprehensive application for accessing medicinal information and resources.
 
 ## Features
-* Search for medical information using MedlinePlus API.
+* Search for medical information by querying a database server.
 * Display detailed information about medications, treatments, and health conditions.
 * Access articles, dosage information, and expert opinions on various health topics.
 * Stay updated on the latest medical news and breakthroughs.
@@ -12,7 +12,8 @@
 * Axios: Promise-based HTTP client for making API requests.
 * React Router: Declarative routing for React applications.
 * CSS Modules: Localized CSS styling for React components.
-* MedlinePlus API: Provides health information and resources.
+* Django framework for backend
+* Sqlite for database server.
 
 
 ## AUTHORS
