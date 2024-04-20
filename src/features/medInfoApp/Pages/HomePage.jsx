@@ -19,7 +19,7 @@ const HomePage = () => {
                 <div className="mb-8">
 
                 </div>
-                {error && <p className="text-red-500">{error}</p>}
+                {error && <p className="text-red-500">Loading...</p>}
 
                 <div className='mb-8'>
                     <Link to='/conditions' className='text-lg text-blue-600 mr-4'>Browse Conditions</Link>

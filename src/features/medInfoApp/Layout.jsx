@@ -8,8 +8,9 @@ import MyFooter from "./components/MyFooter.jsx";
 import DrugPage from "./Pages/DrugPage.jsx";
 import { useNavigate } from "react-router-dom";
 import { redirect } from "react-router-dom";
+import { mymed } from "assets/mysvgs.jsx";
 
-const Layout = ({ children, title = "Med Info App", content, type, name, description }) => {
+const Layout = ({ children, title = 'Med Info App', content, type, name, description }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate()
     const [searchTerm, setSearchTerm] = useState("");
@@ -64,7 +65,7 @@ const Layout = ({ children, title = "Med Info App", content, type, name, descrip
             </Helmet>
             <Navbar handleChange={handleChange} searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
             <div className="grid bg-blue-50  min-h-screen">
-                <div className=" mt-5">
+                <div className=" mt-5"> {/*
                     {/* Render DrugPage only if condition is met */}
                     {/* {shouldRenderDrugPage && <DrugPage searchTerm={searchTerm} drug={drug} />} */}
                     {/* Render other children */}

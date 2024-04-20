@@ -2,7 +2,9 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 
-const baseURL = 'http://localhost:8000/api/drugs/';
+// const baseURL = 'http://localhost:8000/api/drugs/';
+const baseURL = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_API_URL : 'http://localhost:8000/api/drugs/';
+
 
 const initialState = {
     loading: false,
