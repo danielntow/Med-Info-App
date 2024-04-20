@@ -2,7 +2,7 @@ import React, { useEffect, useState, useMemo } from "react";
 import { Helmet } from "react-helmet-async";
 import Navigation from "./Navigation.jsx";
 import Navbar from "./components/Navbar.jsx";
-import { getDrug } from "./slice/medinfoSlice.jsx";
+import { clearDrug, getDrug } from "./slice/medinfoSlice.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import MyFooter from "./components/MyFooter.jsx";
 import DrugPage from "./Pages/DrugPage.jsx";
@@ -41,14 +41,17 @@ const Layout = ({ children, title = 'Med Info App', content, type, name, descrip
     //     // dispatch(getDrug(searchTerm));
     // }, [searchTerm]);
 
+    // const [initialNavigation, setInitialNavigation] = useState(true);
 
 
 
-    useEffect(() => {
-        if (drug && drug.name) {
-            navigate(`/${drug.name}`); // Navigate to the "/drug" route
-        }
-    }, [navigate, drug]);
+    // useEffect(() => {
+    //     if (drug && drug.name) {
+    //         navigate(`/${drug.name}`); // Navigate to the "/drug" route
+
+    //     }
+    // }, [drug, navigate,]);
+
     return (
         <>
             <Helmet>

@@ -38,15 +38,15 @@ function App() {
               {/* <AuthProvider> */}
 
               <Routes>
-                <Route>
-
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path=":drugName?" element={<DrugPage />} />
-                  <Route path="*" element={<PageNotFound />} />
 
 
-                </Route>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/about-medinfo" element={<About />} />
+                <Route path="/:drugName?" element={<DrugPage />} />
+                <Route path="*" element={<PageNotFound />} />
+
+
+
               </Routes>
 
               {/* </AuthProvider> */}

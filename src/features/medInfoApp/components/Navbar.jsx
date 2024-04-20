@@ -24,7 +24,7 @@ function Navbar({ onSearch, searchTerm, setSearchTerm, handleChange }) {
                         </svg>
                     </button>
                     {/* Med Info logo */}
-                    {mymed}
+                    <NavLink to="/">{mymed}</NavLink>
                     <NavLink to="/" exact className="text-5xl font-bold text-white">Med Info</NavLink>
                 </div>
                 <div className="hidden sm:flex items-center font-bold">
@@ -48,10 +48,10 @@ function Navbar({ onSearch, searchTerm, setSearchTerm, handleChange }) {
                     <NavLink to="/" exact className="text-white  hover:text-gray-200">HEALTH NEWS</NavLink>
                 </li>
                 <li className="md:mr-4">
-                    <NavLink to="/about" className="text-white  hover:text-gray-200">ABOUT MED INFO</NavLink>
+                    <NavLink to="/about-medinfo" className="text-white  hover:text-gray-200">ABOUT MED INFO</NavLink>
                 </li>
                 <li className="md:mr-4">
-                    <NavLink to="/cme-education" className="text-white  hover:text-gray-200">BMI CALCULATOR</NavLink>
+                    <NavLink to="/" className="text-white  hover:text-gray-200">BMI CALCULATOR</NavLink>
                 </li>
             </ul>
 
