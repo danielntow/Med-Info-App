@@ -3,8 +3,12 @@ import axios from 'axios';
 
 
 // const baseURL = 'http://localhost:8000/api/drugs/';
-const baseURL = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_API_URL_PRODUCTION : 'http://localhost:8000/api/drugs/';
-console.log(process.env)
+const baseURL = process.env.NODE_ENV === 'production' ? "https://med-info-apps.up.railway.app" : 'http://localhost:8000/api/drugs/';
+
+
+console.log("Node environment:", process.env.NODE_ENV, baseURL);
+
+
 
 const initialState = {
     loading: false,
