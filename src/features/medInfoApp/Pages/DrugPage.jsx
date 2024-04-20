@@ -30,7 +30,7 @@ const DrugPage = ({ searchTerm, }) => {
         <Layout>
             {(drug && drug.name) ?
 
-                <div className="px-8 ">
+                <div className="px-8 mx-3">
                     <div className="bg-sea-blue text-[#1f668a] flex flex-col justify-between mx-auto max-w-7xl">
                         <div className="flex underline ">
                             <span className="text-8xl font-bold mt-8 mb-4">{drug?.name}</span>
