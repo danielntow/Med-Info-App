@@ -2,7 +2,13 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 
-const baseURL = 'http://localhost:8000/api/drugs/';
+// const baseURL = 'http://localhost:8000/api/drugs/';
+const baseURL = process.env.NODE_ENV === 'production' ? "https://med-info-apps.up.railway.app/api/drugs/" : 'http://localhost:8000/api/drugs/';
+
+
+// console.log("Node environment:", process.env.NODE_ENV, baseURL);
+
+
 
 const initialState = {
     loading: false,
@@ -16,6 +22,15 @@ const handleAsyncError = (state, action) => {
     state.error = action.error.message;
 };
 
+export const clearDrugs = createAsyncThunk(
+    'medinfo/clearDrug',
+    (_, { getState }) => {
+        const state = getState();
+        return state.medinfo.drug;
+    }
+);
+
+
 export const getAllDrugs = createAsyncThunk(
     'medinfo/getAllDrugs',
     async (_, { rejectWithValue }) => {
@@ -25,7 +40,7 @@ export const getAllDrugs = createAsyncThunk(
                 return response.data;
             }
         } catch (err) {
-            console.error('Error fetching all drugs:', err);
+            // console.error('Error fetching all drugs:', err);
             return rejectWithValue(err.response?.data);
         }
     }
@@ -37,11 +52,11 @@ export const getDrug = createAsyncThunk(
         try {
             const response = await axios.get(`${baseURL}${searchTerm}`);
             if (response.status === 200) {
-                console.log('RESPONSE from getDrug----', response.data)
+                // console.log('RESPONSE from getDrug----', response.data)
                 return response.data;
             }
         } catch (err) {
-            console.error('Error fetching drug:', err);
+            // console.error('Error fetching drug:', err);
             return rejectWithValue(err.response?.data);
         }
     }
@@ -50,7 +65,13 @@ export const getDrug = createAsyncThunk(
 export const drugSlice = createSlice({
     name: 'medinfo',
     initialState,
-    reducers: {},
+    reducers: {
+
+        clearDrug: (state) => {
+            state.drug = {}; // Set drug state to an empty object
+        },
+
+    },
     extraReducers: (builder) => {
         builder
             .addCase(getAllDrugs.pending, (state, action) => {
@@ -74,5 +95,5 @@ export const drugSlice = createSlice({
 });
 
 
-// export const { } = drugSlice.actions
+export const { clearDrug } = drugSlice.actions
 export default drugSlice.reducer;

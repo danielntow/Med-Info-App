@@ -7,34 +7,31 @@ import { mymed } from "assets/mysvgs";
 import { capsule } from "assets/capsule-line";
 
 import PropTypes from "prop-types";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 // export const useAppSelector = useSelector();
 // import PillIcon from "assets/pill-icon.png"; // Example image
 
-const DrugPage = ({ searchTerm, }) => {
+const DrugPage = () => {
     const dispatch = useDispatch();
-    const { drugName } = useParams();
+    const navigate = useNavigate()
+
 
     const { drug, loading, error } = useSelector((state) => state.medinfo);
-    console.log('seaseessaa', searchTerm)
-
-    // useEffect(() => {
-    //     if (drugName) {
-    //         dispatch(getDrug(drugName.toLowerCase()));
-    //     }
-    // }, [dispatch, drugName]);
 
 
 
+
+
+
+    console.log('sdjasda', drug.name)
     return (
         <Layout>
             {(drug && drug.name) ?
-
-                <div className="px-8 ">
+                <div className="px-8 mx-2">
                     <div className="bg-sea-blue text-[#1f668a] flex flex-col justify-between mx-auto max-w-7xl">
                         <div className="flex underline ">
-                            <span className="text-8xl font-bold mt-8 mb-4">{drug?.name}</span>
-                            <span className="mt-[60px]">{capsule}</span>
+                            <span className="text-8xl font-bold mt-8 mb-4 max-sm:text-4xl">{drug?.name}</span>
+                            <span className="mt-[60px] max-sm:mt-[40px]">{capsule}</span>
                         </div>
                         <div className="">
                             <div>
@@ -63,7 +60,7 @@ const DrugPage = ({ searchTerm, }) => {
                             </div>
                         </div>
                         <div>
-                            <button className="bg-white text-sea-blue px-4 py-2 rounded-md font-semibold hover:bg-sea-blue hover:text-purple-900 transition duration-300">Download PDF</button>
+                            <button className="my-4 bg-white text-sea-blue px-4 py-2 rounded-md font-semibold hover:bg-sea-blue hover:text-purple-900 transition duration-300">Download PDF</button>
                         </div>
                     </div>
                 </div>
