@@ -31,10 +31,19 @@ const Layout = ({ children, title = 'Med Info App', content, type, name, descrip
 
     };
     useEffect(() => {
-        if (searchTerm)
+        if (searchTerm) {
             dispatch(getDrug(searchTerm));
+            // setSearchTerm("")
+        }
 
     }, [dispatch, drug, searchTerm])
+
+    useEffect(() => {
+        if (!loading && searchTerm && drug && drug.name) {
+            navigate(`/${drug.name}`); // Navigate to the "/drug" route
+
+        }
+    }, [loading, drug, navigate, searchTerm,]);
 
 
     // useEffect(() => {

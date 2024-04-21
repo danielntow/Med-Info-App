@@ -10,6 +10,7 @@ function Navbar({ onSearch, searchTerm, setSearchTerm, handleChange }) {
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
+
     };
 
     return (
@@ -45,13 +46,13 @@ function Navbar({ onSearch, searchTerm, setSearchTerm, handleChange }) {
             {/* Third Row */}
             <ul className={`flex flex-row sm:flex-row sm:justify-center max-sm:justify-start space-x-8 row-span-1 font-extrabold max-sm:text-sm text-xl ${isOpen ? 'md:flex' : 'hidden'}  ${isOpen ? 'md:flex' : 'max-sm:hidden'} `}>
                 <li className="md:mr-4">
-                    <NavLink to="/" exact className="text-white  hover:text-gray-200">HEALTH NEWS</NavLink>
+                    <NavLink to="/health-news" exact className="text-white  hover:text-gray-200">HEALTH NEWS</NavLink>
                 </li>
                 <li className="md:mr-4">
                     <NavLink to="/about-medinfo" className="text-white  hover:text-gray-200">ABOUT MED INFO</NavLink>
                 </li>
                 <li className="md:mr-4">
-                    <NavLink to="/" className="text-white  hover:text-gray-200">BMI CALCULATOR</NavLink>
+                    <NavLink to="/BMI-Calculator" className="text-white  hover:text-gray-200">BMI CALCULATOR</NavLink>
                 </li>
             </ul>
 

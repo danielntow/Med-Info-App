@@ -40,12 +40,12 @@ const HomePage = () => {
     //         setNavigationDone(true);
     //     }
     // }, [navigationDone, drug, navigate,]);
-    useEffect(() => {
-        if (drug && drug.name) {
-            navigate(`/${drug.name}`); // Navigate to the "/drug" route
+    // useEffect(() => {
+    //     if (drug && drug.name) {
+    //         navigate(`/${drug.name}`); // Navigate to the "/drug" route
 
-        }
-    }, [drug, navigate,]);
+    //     }
+    // }, [drug, navigate,]);
 
     return (
         <Layout>
