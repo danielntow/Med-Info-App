@@ -26,7 +26,8 @@ function Navbar({ searchTerm, setSearchTerm, handleChange }) {
                     </button>
                     {/* Med Info logo */}
                     <NavLink to="/">{mymed}</NavLink>
-                    <NavLink to="/" exact className="text-5xl font-bold text-white">Med Info</NavLink>
+                    <NavLink to="/" exact className="text-5xl font-bold text-transparent bg-gradient-to-r from-red-500 to-yellow-500 to-green-500 to-blue-500 to-purple-500 bg-clip-text">Med Info</NavLink>
+
                 </div>
                 <div className="hidden sm:flex items-center font-bold">
                     {/* Search bar */}
@@ -46,13 +47,13 @@ function Navbar({ searchTerm, setSearchTerm, handleChange }) {
             {/* Third Row */}
             <ul className={`flex flex-row sm:flex-row sm:justify-center max-sm:justify-start space-x-8 row-span-1 font-extrabold max-sm:text-sm text-xl ${isOpen ? 'md:flex' : 'hidden'}  ${isOpen ? 'md:flex' : 'max-sm:hidden'} `}>
                 <li className="md:mr-4">
-                    <NavLink to="/health-news" exact className="text-white  hover:text-gray-200">HEALTH NEWS </NavLink>
+                    <NavLink to="/health-news" exact className="text-white  hover:text-gray-200" style={({ isActive }) => ({ color: isActive ? "#87CEEB" : "white" })}>HEALTH NEWS </NavLink>
                 </li>
                 <li className="md:mr-4">
-                    <NavLink to="/about-medinfo" className="text-white  hover:text-gray-200">ABOUT MED INFO</NavLink>
+                    <NavLink to="/about-medinfo" className="text-white  hover:text-gray-200 " style={({ isActive }) => ({ color: isActive ? "#87CEEB" : "white" })}>ABOUT MED INFO</NavLink>
                 </li>
                 <li className="md:mr-4">
-                    <NavLink to="/BMI-Calculator" className="text-white  hover:text-gray-200">BMI CALCULATOR</NavLink>
+                    <NavLink to="/BMI-Calculator" className="text-white  hover:text-gray-200" style={({ isActive }) => ({ color: isActive ? "#87CEEB" : "white" })}>BMI CALCULATOR</NavLink>
                 </li>
             </ul>
 
