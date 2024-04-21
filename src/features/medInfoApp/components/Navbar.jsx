@@ -5,7 +5,7 @@ import SearchDrug from './SearchDrug';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDrug } from '../slice/medinfoSlice';
 
-function Navbar({ onSearch, searchTerm, setSearchTerm, handleChange }) {
+function Navbar({ searchTerm, setSearchTerm, handleChange }) {
     const [isOpen, setIsOpen] = useState(true);
 
     const toggleMenu = () => {
@@ -46,7 +46,7 @@ function Navbar({ onSearch, searchTerm, setSearchTerm, handleChange }) {
             {/* Third Row */}
             <ul className={`flex flex-row sm:flex-row sm:justify-center max-sm:justify-start space-x-8 row-span-1 font-extrabold max-sm:text-sm text-xl ${isOpen ? 'md:flex' : 'hidden'}  ${isOpen ? 'md:flex' : 'max-sm:hidden'} `}>
                 <li className="md:mr-4">
-                    <NavLink to="/health-news" exact className="text-white  hover:text-gray-200">HEALTH NEWS</NavLink>
+                    <NavLink to="/health-news" exact className="text-white  hover:text-gray-200">HEALTH NEWS </NavLink>
                 </li>
                 <li className="md:mr-4">
                     <NavLink to="/about-medinfo" className="text-white  hover:text-gray-200">ABOUT MED INFO</NavLink>
