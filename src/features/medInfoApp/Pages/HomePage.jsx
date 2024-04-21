@@ -11,7 +11,7 @@ const HomePage = () => {
         <Layout>
             <div className="mx-auto px-4 py-8 overflow-hidden max-sm:max-w-sm">
                 <h1 className="text-4xl md:text-5xl text-center text-blue-600 font-bold mb-8"> <p>Welcome to</p><p>MedInfo App</p>  </h1>
-                <p className="text-lg text-center text-gray-700 mb-6">Your trusted source for medical information and resources.</p>
+                <p className="text-lg  text-center text-gray-700 mb-6">Your trusted source for medical information and resources.</p>
 
 
 
