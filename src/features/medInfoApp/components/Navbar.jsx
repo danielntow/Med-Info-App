@@ -26,7 +26,7 @@ function Navbar({ searchTerm, setSearchTerm, handleChange }) {
                     </button>
                     {/* Med Info logo */}
                     <NavLink to="/">{mymed}</NavLink>
-                    <NavLink to="/" exact className="text-5xl font-bold text-transparent bg-gradient-to-r from-red-500 to-yellow-500 to-green-500 to-blue-500 to-purple-500 bg-clip-text">Med Info</NavLink>
+                    <NavLink to="/" exact className="text-5xl font-bold text-transparent bg-gradient-to-r from-red-500 to-yellow-500 to-green-500 to-blue-500 to-purple-500 bg-clip-text">MedInfo</NavLink>
 
                 </div>
                 <div className="hidden sm:flex items-center font-bold">
