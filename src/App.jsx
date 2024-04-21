@@ -17,6 +17,7 @@ import { useSelector } from 'react-redux';
 import About from 'features/medInfoApp/Pages/About';
 import HealthNews from 'features/medInfoApp/Pages/HealthNews';
 import BMICalculator from 'features/medInfoApp/Pages/BMICalculator';
+import HealthArticlePage from 'features/medInfoApp/Pages/HealthArticlePage';
 
 
 function App() {
@@ -45,7 +46,10 @@ function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/about-medinfo" element={<About />} />
                 <Route path="/BMI-Calculator" element={<BMICalculator />} />
-                <Route path="/health-news" element={<HealthNews />} />
+                <Route path="/health-news" element={<HealthNews />} >
+
+                </Route>
+                <Route path='/health-news/:slug?' element={<HealthArticlePage />} />
                 <Route path="/:drugName?" element={<DrugPage />} />
                 <Route path="*" element={<PageNotFound />} />
 
