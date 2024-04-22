@@ -17,7 +17,7 @@ function Navbar({ searchTerm, setSearchTerm, handleChange }) {
 
 
     const isAuthenticated = Cookies.get("isAuthenticated")
-    console.log('user is ', isAuthenticated)
+
 
 
     return (

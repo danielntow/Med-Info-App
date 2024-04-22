@@ -2,6 +2,7 @@ import axios from "axios";
 // import jwt_decode from "jwt-decode";
 import { jwtDecode } from "jwt-decode";
 import dayjs from "dayjs";
+import Cookies from "js-cookie";
 
 // const baseURL = "http://localhost:8000/api/";
 
@@ -47,7 +48,7 @@ axiosDannyInstance.interceptors.request.use(
 
     // const user = jwt_decode(authTokens);
     const user = jwtDecode(authTokens);
-    console.log('useeeeeer', user)
+
     const isExpired = dayjs.unix(user.exp).diff(dayjs()) < 1;
     console.log("check exp", dayjs.unix(user.exp).diff(dayjs()));
     console.log("isExpired", isExpired);

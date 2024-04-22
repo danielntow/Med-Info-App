@@ -138,7 +138,7 @@ export const tokenLogin = createAsyncThunk(
         return response.data;
       }
 
-      console.log('finally');
+      // console.log('finally');
     } catch (err) {
       console.error("inuserslice token error", err);
       return thunkAPI.rejectWithValue(err.response.data);
@@ -256,8 +256,8 @@ export const myUserSlice = createSlice({
     builder.addCase(mytoken.fulfilled, (state, action) => {
 
 
-      console.log("it works", action.payload);
-      console.log("it succeeded dont .......");
+      // console.log("it works", action.payload);
+      // console.log("it succeeded dont .......");
 
       state.entities.push(action.payload);
       state.token = action.payload.access;

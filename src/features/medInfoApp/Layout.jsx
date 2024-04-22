@@ -9,6 +9,8 @@ import DrugPage from "./Pages/DrugPage.jsx";
 import { useNavigate } from "react-router-dom";
 import { redirect } from "react-router-dom";
 import { mymed } from "assets/mysvgs.jsx";
+import { Cookie } from "@mui/icons-material";
+import Cookies from "js-cookie";
 
 const Layout = ({ children, title = 'Med Info App', content, type, name, description }) => {
     const dispatch = useDispatch();
@@ -60,7 +62,8 @@ const Layout = ({ children, title = 'Med Info App', content, type, name, descrip
 
     //     }
     // }, [drug, navigate,]);
-
+    const email = Cookies.get('')
+    const isAuthenticated = Cookies.get('isAuthenticated')
     return (
         <>
             <Helmet>
@@ -77,15 +80,11 @@ const Layout = ({ children, title = 'Med Info App', content, type, name, descrip
             </Helmet>
             <Navbar handleChange={handleChange} searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
             <div className="grid bg-blue-50  min-h-screen">
-                <div className=" mt-5"> {/*
-                    {/* Render DrugPage only if condition is met */}
-                    {/* {shouldRenderDrugPage && <DrugPage searchTerm={searchTerm} drug={drug} />} */}
-                    {/* Render other children */}
+
+                <div className=" mt-5">
+                    {isAuthenticated && <div className=""></div>}
                     {children}
-                    {/* {React.Children.map(children, (child) => {
-                        return React.cloneElement(child, { searchTerm, drug });
-                    })} */}
-                    {/* {children} */}
+
                 </div>
 
             </div>
