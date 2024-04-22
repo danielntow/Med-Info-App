@@ -299,16 +299,16 @@ export const myUserSlice = createSlice({
 
       state.entities.push(action.payload);
       state.token = action.payload.access;
-
       state.loading = false;
       state.registered = true;
       state.isAuthenticated = true;
       state.user.token = action.payload.access;
       state.tryUser = jwtDecode(action.payload.access);
+
       Cookies.set("isAuthenticated", state.isAuthenticated)
       Cookies.set("local_user", jwtDecode(action.payload.access));
       Cookies.set("access_token", action.payload.access);
-
+      Cookies.set("tryUser", state.tryUser)
       // // Use Cookies to set values
       // Cookies.set("isAuthenticated", JSON.stringify(state.isAuthenticated));
       // // Use Cookies to set values
