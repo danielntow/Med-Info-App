@@ -1,8 +1,11 @@
 import axios from "axios";
-import jwt_decode from "jwt-decode";
+// import jwt_decode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import dayjs from "dayjs";
 
-const baseURL = "http://localhost:8000/api/";
+// const baseURL = "http://localhost:8000/api/";
+
+const baseURL = process.env.NODE_ENV === 'production' ? "https://med-info-apps.up.railway.app/api/" : 'http://localhost:8000/api/';
 
 let authTokens = localStorage.getItem("access_token")
   ? localStorage.getItem("access_token")
@@ -42,7 +45,9 @@ axiosDannyInstance.interceptors.request.use(
     // console.log('authRefresh', authRefresh)
     console.log("authTokens", authTokens);
 
-    const user = jwt_decode(authTokens);
+    // const user = jwt_decode(authTokens);
+    const user = jwtDecode(authTokens);
+    console.log('useeeeeer', user)
     const isExpired = dayjs.unix(user.exp).diff(dayjs()) < 1;
     console.log("check exp", dayjs.unix(user.exp).diff(dayjs()));
     console.log("isExpired", isExpired);

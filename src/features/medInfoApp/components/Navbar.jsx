@@ -1,17 +1,24 @@
 import { mymed } from 'assets/mysvgs';
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import SearchDrug from './SearchDrug';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDrug } from '../slice/medinfoSlice';
-
+import { jwtDecode } from 'jwt-decode';
+import { logoutJWT } from 'features/redux-users/myUserSlice';
+import Cookies from 'js-cookie';
 function Navbar({ searchTerm, setSearchTerm, handleChange }) {
     const [isOpen, setIsOpen] = useState(true);
-
+    const dispatch = useDispatch()
     const toggleMenu = () => {
         setIsOpen(!isOpen);
 
     };
+
+
+    const isAuthenticated = Cookies.get("isAuthenticated")
+    console.log('user is ', isAuthenticated)
+
 
     return (
         <nav className="bg-gradient-to-b from-[#87CEEB] to-[#2E86C1] py-2 px-4 grid grid-rows-5">
@@ -33,8 +40,19 @@ function Navbar({ searchTerm, setSearchTerm, handleChange }) {
                     {/* Search bar */}
                     <SearchDrug searchTerm={searchTerm} setSearchTerm={setSearchTerm} handleChange={handleChange} />
                     {/* Register and Login links */}
-                    <NavLink to="/register" className="text-white text-sm hover:underline mr-4">Register</NavLink>
-                    <NavLink to="/login" className="text-white text-sm hover:underline">Login</NavLink>
+                    {!isAuthenticated ? (
+                        <>
+                            <NavLink to="/register" className="text-white text-sm hover:underline mr-4">Register</NavLink>
+                            <NavLink to="/psignin" className="text-white text-sm hover:underline">Login</NavLink>
+                        </>
+                    ) : (
+                        <Link to="/signout" className="text-white text-lg hover:underline mr-4"
+
+                        >Logout</Link>
+                    )}
+
+
+
                 </div>
             </div>
 

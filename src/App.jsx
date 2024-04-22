@@ -18,6 +18,10 @@ import About from 'features/medInfoApp/Pages/About';
 import HealthNews from 'features/medInfoApp/Pages/HealthNews';
 import BMICalculator from 'features/medInfoApp/Pages/BMICalculator';
 import HealthArticlePage from 'features/medInfoApp/Pages/HealthArticlePage';
+import RegisterPage from 'features/redux-users/components/RegisterPage';
+import PersonalLogin from 'features/redux-users/components/PersonalLogin';
+import SignOut from 'features/redux-users/components/SignOut';
+import LoginD from 'features/redux-users/components/LoginD';
 
 
 function App() {
@@ -52,6 +56,15 @@ function App() {
                 <Route path='/health-news/:slug?' element={<HealthArticlePage />} />
                 <Route path="/:drugName?" element={<DrugPage />} />
                 <Route path="*" element={<PageNotFound />} />
+
+
+                {/* authentication */}
+
+                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/psignin/:slug?" element={<PersonalLogin />} />
+                <Route path="/signout" element={<SignOut />} />
+                <Route path="/login" element={<LoginD />} />
+
 
 
 
