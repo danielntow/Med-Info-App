@@ -19,11 +19,6 @@ const DrugPage = () => {
     const { drug, loading, error } = useSelector((state) => state.medinfo);
 
 
-
-
-
-
-    console.log('sdjasda', drug.name)
     return (
         <Layout>
             {(drug && drug.name) ?
@@ -81,16 +76,16 @@ const DrugPage = () => {
     );
 };
 
-DrugPage.propTypes = {
-    searchTerm: PropTypes.string.isRequired,
-    drug: PropTypes.arrayOf(
-        PropTypes.shape({
-            name: PropTypes.string,
-            dosages: PropTypes.string,
-            adverse_effects: PropTypes.string
-        })
-    ).isRequired
-};
+// DrugPage.propTypes = {
+//     // searchTerm: PropTypes.string.isRequired,
+//     drug: PropTypes.arrayOf(
+//         PropTypes.shape({
+//             name: PropTypes.string,
+//             dosages: PropTypes.string,
+//             adverse_effects: PropTypes.string
+//         })
+//     ).isRequired
+// };
 
 
 export default DrugPage;

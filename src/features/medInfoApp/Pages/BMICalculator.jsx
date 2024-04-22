@@ -48,13 +48,23 @@ const BMICalculator = () => {
         if (bmiResult < 18.5) {
             return 'Underweight';
         } else if (bmiResult >= 18.5 && bmiResult < 24.9) {
-            return 'Normal weight';
+            return <span className="text-green-600">Normal weight</span>;
         } else if (bmiResult >= 25 && bmiResult < 29.9) {
             return 'Overweight';
         } else {
             return 'Obese';
         }
     };
+
+    const bmiColor = () => {
+        if (bmiResult < 18.5 || bmiResult >= 25) {
+            return 'text-red-500';
+        } else {
+            return 'text-green-600';
+        }
+    };
+
+
 
     return (
         <Layout title="BMI Calculator" content="Calculate your Body Mass Index (BMI)">
@@ -105,8 +115,8 @@ const BMICalculator = () => {
                     </button>
                     {bmiResult && (
                         <div className="mt-6">
-                            <p className="text-lg font-semibold text-gray-800 mb-2">Your BMI: {bmiResult}</p>
-                            <p className="text-lg text-blue-500 font-bold text-center">You are {interpretBMI()}</p>
+                            <p className={`text-lg font-semibold text-gray-800 mb-2`}>Your BMI: {bmiResult}</p>
+                            <p className={`text-2xl font-bold text-center ${bmiColor()}`}> <span className='text-black text-lg'>You are</span> {interpretBMI()}</p>
                         </div>
                     )}
                 </div>

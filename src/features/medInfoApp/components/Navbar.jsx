@@ -26,7 +26,7 @@ function Navbar({ searchTerm, setSearchTerm, handleChange }) {
                     </button>
                     {/* Med Info logo */}
                     <NavLink to="/">{mymed}</NavLink>
-                    <NavLink to="/" exact className="text-5xl font-bold text-transparent bg-gradient-to-r from-red-500 to-yellow-500 to-green-500 to-blue-500 to-purple-500 bg-clip-text">MedInfo</NavLink>
+                    <NavLink to="/" className="text-5xl font-bold text-transparent bg-gradient-to-r from-red-500 to-yellow-500 to-green-500 to-blue-500 to-purple-500 bg-clip-text">MedInfo</NavLink>
 
                 </div>
                 <div className="hidden sm:flex items-center font-bold">
@@ -47,7 +47,7 @@ function Navbar({ searchTerm, setSearchTerm, handleChange }) {
             {/* Third Row */}
             <ul className={`flex flex-row sm:flex-row sm:justify-center max-sm:justify-start space-x-8 row-span-1 font-extrabold max-sm:text-sm text-xl ${isOpen ? 'md:flex' : 'hidden'}  ${isOpen ? 'md:flex' : 'max-sm:hidden'} `}>
                 <li className="md:mr-4">
-                    <NavLink to="/health-news" exact className="text-white  hover:text-gray-200" style={({ isActive }) => ({ color: isActive ? "#87CEEB" : "white" })}>HEALTH NEWS </NavLink>
+                    <NavLink to="/health-news" className="text-white  hover:text-gray-200" style={({ isActive }) => ({ color: isActive ? "#87CEEB" : "white" })}>HEALTH NEWS </NavLink>
                 </li>
                 <li className="md:mr-4">
                     <NavLink to="/about-medinfo" className="text-white  hover:text-gray-200 " style={({ isActive }) => ({ color: isActive ? "#87CEEB" : "white" })}>ABOUT MED INFO</NavLink>
