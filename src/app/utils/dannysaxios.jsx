@@ -34,7 +34,7 @@ axiosDannyInstance.interceptors.request.use(
   //   return response
   // },
   async (req) => {
-    console.log("authTokens in instance", authTokens);
+    // console.log("authTokens in instance", authTokens);
     if (!authTokens) {
       // authRefresh = localStorage.getItem('refresh_token')
       authTokens = localStorage.getItem("access_token")
@@ -42,7 +42,7 @@ axiosDannyInstance.interceptors.request.use(
         : null;
       req.headers.Authorization = `Bearer ${authTokens}`;
     }
-    console.log("interceptor ran req", req);
+    // console.log("interceptor ran req", req);
     // console.log('authRefresh', authRefresh)
     console.log("authTokens", authTokens);
 
@@ -64,7 +64,7 @@ axiosDannyInstance.interceptors.request.use(
 
       req.headers.Authorization = `Bearer ${response.data.access}`;
       refreshToken = localStorage.getItem("refresh_token");
-      console.log("refresh headers", req.headers.Authorization);
+      // console.log("refresh headers", req.headers.Authorization);
     }
 
     return req;

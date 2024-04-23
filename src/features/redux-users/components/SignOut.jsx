@@ -28,7 +28,8 @@ export default function SignOut() {
     Cookies.remove("isAuthenticated");
     Cookies.remove("local_user");
     Cookies.remove("userProfile");
-    console.log("u just visisted the signout page")
+    Cookies.remove("username");
+    console.log("u just visisted the signout page");
 
     // Clear the authorization headers
     axiosInstance.defaults.headers["Authorization"] = null;

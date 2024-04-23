@@ -269,7 +269,7 @@ export const myUserSlice = createSlice({
       state.tryUser = jwtDecode(action.payload.access);
       state.tryUser = jwtDecode(action.payload.access);
 
-
+      Cookies.set("username", state.tryUser.username[0]);
 
       Cookies.set("isAuthenticated", state.isAuthenticated)
       Cookies.set("local_user", jwtDecode(action.payload.access));
@@ -304,11 +304,13 @@ export const myUserSlice = createSlice({
       state.isAuthenticated = true;
       state.user.token = action.payload.access;
       state.tryUser = jwtDecode(action.payload.access);
+      console.log("tryUser", state.tryUser.email)
 
       Cookies.set("isAuthenticated", state.isAuthenticated)
       Cookies.set("local_user", jwtDecode(action.payload.access));
       Cookies.set("access_token", action.payload.access);
-      Cookies.set("tryUser", state.tryUser)
+
+      // console.log()
       // // Use Cookies to set values
       // Cookies.set("isAuthenticated", JSON.stringify(state.isAuthenticated));
       // // Use Cookies to set values
