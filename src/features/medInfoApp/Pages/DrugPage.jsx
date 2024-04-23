@@ -5,8 +5,8 @@ import { getDrug } from "../slice/medinfoSlice";
 import Layout from "../Layout";
 import { mymed } from "assets/mysvgs";
 import { capsule } from "assets/capsule-line";
+import { jsPDF } from "jspdf";
 
-import PropTypes from "prop-types";
 import { useNavigate, useParams } from "react-router-dom";
 // export const useAppSelector = useSelector();
 // import PillIcon from "assets/pill-icon.png"; // Example image
@@ -17,6 +17,37 @@ const DrugPage = () => {
 
 
     const { drug, loading, error } = useSelector((state) => state.medinfo);
+
+
+
+
+
+    const generatePDF = () => {
+        // Create a new jsPDF instance
+        const pdf = new jsPDF();
+
+        // Set font size and style for the document
+        pdf.setFontSize(12);
+        pdf.setFont("helvetica", "normal");
+
+        // Add drug information to the PDF with improved styling
+        pdf.setTextColor("#333333"); // Set text color to dark gray
+        pdf.setFontSize(18);
+        pdf.text(`Drug Information`, 105, 20, { align: "center" });
+
+        pdf.setFontSize(12);
+        pdf.setTextColor("#666666"); // Set text color to light gray
+        pdf.text(`Name: ${drug.name}`, 10, 40);
+        pdf.text(`Dosages: ${drug.dosages}`, 10, 55);
+        pdf.text(`Adverse Effect: ${drug.warning}`, 10, 70);
+        pdf.text(`Pregnancy & Lactation: ${drug.pregnancy_lactations}`, 10, 85);
+        pdf.text(`Contraindications: ${drug.contraindications}`, 10, 100);
+        pdf.text(`Administration: ${drug.administrations}`, 10, 115);
+
+        // Save the PDF with a sanitized filename
+        const sanitizedFilename = drug.name.replace(/[^\w.-]/g, '_');
+        pdf.save(`${sanitizedFilename}.pdf`);
+    }
 
 
     return (
@@ -55,7 +86,16 @@ const DrugPage = () => {
                             </div>
                         </div>
                         <div>
-                            <button className="my-4 bg-white text-sea-blue px-4 py-2 rounded-md font-semibold hover:bg-sea-blue hover:text-purple-900 transition duration-300">Download PDF</button>
+                            {/* <button className="my-4 bg-white text-sea-blue px-4 py-2 rounded-md font-semibold hover:bg-sea-blue hover:text-purple-900 transition duration-300" onClick={generatePDF}>Download PDF</button> */}
+                            <div>
+                                <button
+                                    className="my-4 bg-[#1e4152] text-white px-4 py-2 rounded-md font-semibold hover:bg-blue-700 transition duration-300"
+                                    onClick={generatePDF}
+                                >
+                                    Download PDF
+                                </button>
+                            </div>
+
                         </div>
                     </div>
                 </div>
