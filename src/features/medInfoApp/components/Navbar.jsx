@@ -26,11 +26,11 @@ function Navbar({ searchTerm, setSearchTerm, handleChange }) {
             <div className="flex items-center justify-between sm:justify-between row-span-2">
                 <div className="flex items-center w-full sm:w-auto sm:flex justify-start md:w-2/4 gap-3">
                     {/* Hamburger icon for mobile */}
-                    <button className="block sm:hidden" onClick={toggleMenu}>
+                    {/* <button className="block sm:hidden" onClick={toggleMenu}>
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                         </svg>
-                    </button>
+                    </button> */}
                     {/* Med Info logo */}
                     <NavLink to="/">{mymed}</NavLink>
                     <NavLink to="/" className="text-5xl font-bold text-transparent bg-gradient-to-r from-red-500 to-yellow-500 to-green-500 to-blue-500 to-purple-500 bg-clip-text">MedInfo</NavLink>
@@ -46,9 +46,9 @@ function Navbar({ searchTerm, setSearchTerm, handleChange }) {
                             <NavLink to="/psignin" className="text-white text-sm hover:underline">Login</NavLink>
                         </>
                     ) : (
-                        <Link to="/signout" className="text-white text-lg hover:underline mr-4"
+                        <NavLink to="/signout" className="text-white text-lg hover:underline mr-4"
 
-                        >Logout</Link>
+                        >Logout</NavLink>
                     )}
 
 

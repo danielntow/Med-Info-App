@@ -15,9 +15,19 @@ const HealthNews = () => {
                         Stay updated with the latest health news and information.
                     </p>
                 </div>
-                <div className="mt-10 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <div className="mt-10 grid gap-8 md:grid-cols-2 lg:grid-cols-3  mx-auto max-sm:mx-1 ">
                     {healthNewsData.map(article => (
-                        <div key={article.id} className="bg-white overflow-hidden shadow rounded-lg flex flex-col">
+                        // <div key={article.id} className="bg-white overflow-hidden shadow rounded-lg flex flex-col card">
+                        //     <div className="p-6 flex-grow">
+                        //         <h2 className="text-lg font-medium text-gray-900">{article.topic}</h2>
+                        //         <p className="mt-2 text-sm text-gray-500">{article.body.split(' ').slice(0, 30).join(' ')}...</p>
+                        //     </div>
+                        //     <div className="bg-gray-50 px-6 py-3">
+
+                        //         <Link to={`/health-news/${article.url}`} className="text-sm font-medium text-blue-600 hover:text-blue-400">Read more</Link>
+                        //     </div>
+                        // </div>
+                        <div key={article.id} className="bg-white overflow-hidden shadow rounded-lg flex flex-col card transition-transform hover:scale-105">
                             <div className="p-6 flex-grow">
                                 <h2 className="text-lg font-medium text-gray-900">{article.topic}</h2>
                                 <p className="mt-2 text-sm text-gray-500">{article.body.split(' ').slice(0, 30).join(' ')}...</p>
@@ -27,6 +37,7 @@ const HealthNews = () => {
                                 <Link to={`/health-news/${article.url}`} className="text-sm font-medium text-blue-600 hover:text-blue-400">Read more</Link>
                             </div>
                         </div>
+
                     ))}
                 </div>
             </div>
