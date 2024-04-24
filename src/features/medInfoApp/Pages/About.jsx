@@ -1,7 +1,13 @@
-import React from 'react'
-import Layout from '../Layout'
+import React, { useState } from 'react';
+import Layout from '../Layout';
 
 const About = () => {
+    const [showEmail, setShowEmail] = useState(false);
+
+    const handleContactClick = () => {
+        setShowEmail(!showEmail);
+    };
+
     return (
         <Layout title="About Us - Med Info App">
             <div className="container mx-auto px-4 py-8">
@@ -30,12 +36,17 @@ const About = () => {
                 <div>
                     <h2 className="text-xl font-semibold mb-2">Get in Touch</h2>
                     <p className="text-gray-700 mb-4">
-                        Have questions, feedback, or suggestions? We'd love to hear from you! Feel free to <a href="#" className="text-blue-500 hover:underline">contact us</a> with any inquiries, and our team will be happy to assist you.
+                        Have questions, feedback, or suggestions? We'd love to hear from you! Feel free to <a href="#" className="text-blue-500 hover:underline" onClick={handleContactClick}>contact us</a> with any inquiries, and our team will be happy to assist you.
                     </p>
+                    {showEmail && (
+                        <div className="bg-gray-200 p-2 rounded-md">
+                            <p className="text-gray-700 font-semibold">Email: danielntow@gmail.com</p>
+                        </div>
+                    )}
                 </div>
             </div>
-        </Layout >
-    )
-}
+        </Layout>
+    );
+};
 
-export default About
+export default About;

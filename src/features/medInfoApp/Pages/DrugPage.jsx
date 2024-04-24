@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { drugSlice } from "../slice/medinfoSlice";
 import { getDrug } from "../slice/medinfoSlice";
 import Layout from "../Layout";
 import { mymed } from "assets/mysvgs";
 import { capsule } from "assets/capsule-line";
-
-import PropTypes from "prop-types";
+import { jsPDF } from "jspdf";
+import html2pdf from 'html2pdf.js';
 import { useNavigate, useParams } from "react-router-dom";
 // export const useAppSelector = useSelector();
 // import PillIcon from "assets/pill-icon.png"; // Example image
@@ -18,17 +18,21 @@ const DrugPage = () => {
 
     const { drug, loading, error } = useSelector((state) => state.medinfo);
 
+    const elementRef = useRef(null);
+
+    const generatePDF = () => {
+        const element = elementRef.current;
+        if (!element) return;
+
+        html2pdf(element);
+    };
 
 
-
-
-
-    console.log('sdjasda', drug.name)
     return (
         <Layout>
             {(drug && drug.name) ?
-                <div className="px-8 mx-2">
-                    <div className="bg-sea-blue text-[#1f668a] flex flex-col justify-between mx-auto max-w-7xl">
+                <div className="px-8 mx-2" id="element-to-print" ref={elementRef} >
+                    <div className=" text-[#1f668a] flex flex-col justify-between mx-auto max-w-7xl bg-sea-blue">
                         <div className="flex underline ">
                             <span className="text-8xl font-bold mt-8 mb-4 max-sm:text-4xl">{drug?.name}</span>
                             <span className="mt-[60px] max-sm:mt-[40px]">{capsule}</span>
@@ -60,7 +64,16 @@ const DrugPage = () => {
                             </div>
                         </div>
                         <div>
-                            <button className="my-4 bg-white text-sea-blue px-4 py-2 rounded-md font-semibold hover:bg-sea-blue hover:text-purple-900 transition duration-300">Download PDF</button>
+                            {/* <button className="my-4 bg-white text-sea-blue px-4 py-2 rounded-md font-semibold hover:bg-sea-blue hover:text-purple-900 transition duration-300" onClick={generatePDF}>Download PDF</button> */}
+                            <div>
+                                <button
+                                    className="my-4 bg-[#1e4152] text-white px-4 py-2 rounded-md font-semibold hover:bg-blue-700 transition duration-300"
+                                    onClick={generatePDF}
+                                >
+                                    Download PDF
+                                </button>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -81,16 +94,16 @@ const DrugPage = () => {
     );
 };
 
-DrugPage.propTypes = {
-    searchTerm: PropTypes.string.isRequired,
-    drug: PropTypes.arrayOf(
-        PropTypes.shape({
-            name: PropTypes.string,
-            dosages: PropTypes.string,
-            adverse_effects: PropTypes.string
-        })
-    ).isRequired
-};
+// DrugPage.propTypes = {
+//     // searchTerm: PropTypes.string.isRequired,
+//     drug: PropTypes.arrayOf(
+//         PropTypes.shape({
+//             name: PropTypes.string,
+//             dosages: PropTypes.string,
+//             adverse_effects: PropTypes.string
+//         })
+//     ).isRequired
+// };
 
 
 export default DrugPage;

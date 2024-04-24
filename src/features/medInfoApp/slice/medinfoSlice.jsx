@@ -1,5 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { healthNewsData } from '../healthNews';
+
 
 
 // const baseURL = 'http://localhost:8000/api/drugs/';
@@ -15,6 +17,7 @@ const initialState = {
     drugs: [],
     drug: {},
     error: '',
+    healthArticle: {}
 };
 
 const handleAsyncError = (state, action) => {
@@ -70,6 +73,11 @@ export const drugSlice = createSlice({
         clearDrug: (state) => {
             state.drug = {}; // Set drug state to an empty object
         },
+        healthNewsArticles: (state) => {
+
+            state.healthArticle = healthNewsData;
+
+        },
 
     },
     extraReducers: (builder) => {
@@ -95,5 +103,5 @@ export const drugSlice = createSlice({
 });
 
 
-export const { clearDrug } = drugSlice.actions
+export const { clearDrug, healthNewsArticles } = drugSlice.actions
 export default drugSlice.reducer;

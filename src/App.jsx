@@ -15,6 +15,14 @@ import PageNotFound from 'features/medInfoApp/PageNotFound';
 import DrugPage from 'features/medInfoApp/Pages/DrugPage';
 import { useSelector } from 'react-redux';
 import About from 'features/medInfoApp/Pages/About';
+import HealthNews from 'features/medInfoApp/Pages/HealthNews';
+import BMICalculator from 'features/medInfoApp/Pages/BMICalculator';
+import HealthArticlePage from 'features/medInfoApp/Pages/HealthArticlePage';
+import RegisterPage from 'features/redux-users/components/RegisterPage';
+import PersonalLogin from 'features/redux-users/components/PersonalLogin';
+import SignOut from 'features/redux-users/components/SignOut';
+import LoginD from 'features/redux-users/components/LoginD';
+import AuthenticationRedirect from 'features/medInfoApp/components/AuthenticationRedirect';
 
 
 function App() {
@@ -42,6 +50,25 @@ function App() {
 
                 <Route path="/" element={<HomePage />} />
                 <Route path="/about-medinfo" element={<About />} />
+                <Route path="/BMI-Calculator" element={<BMICalculator />} />
+                <Route path="/health-news" element={<HealthNews />} >
+
+                </Route>
+                <Route path='/health-news/:slug?' element={<HealthArticlePage />} />
+
+
+
+
+                {/* authentication */}
+
+                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/psignin/:slug?" element={<PersonalLogin />} />
+                <Route path="/signout" element={<SignOut />} />
+                <Route path="/login" element={<LoginD />} />
+                {/* authentiction redirect*/}
+
+
+                <Route path="/get-authenticated" element={<AuthenticationRedirect />} />
                 <Route path="/:drugName?" element={<DrugPage />} />
                 <Route path="*" element={<PageNotFound />} />
 
@@ -53,7 +80,7 @@ function App() {
             </Router>
           </QueryClientProvider>
         </HelmetProvider>
-      </div>
+      </div >
     </>
   )
 }

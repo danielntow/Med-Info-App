@@ -1,8 +1,9 @@
 import axios from "axios";
-import jwt_decode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import dayjs from "dayjs";
 
-const baseURL = "http://localhost:8000";
+// const baseURL = "http://localhost:8000";
+const baseURL = process.env.NODE_ENV === 'production' ? "https://med-info-apps.up.railway.app" : 'http://localhost:8000';
 
 let authTokens = localStorage.getItem("authTokens")
   ? JSON.parse(localStorage.getItem("authTokens"))
@@ -26,7 +27,7 @@ axiosInstance.interceptors.request.use(async (req) => {
   }
   console.log("interceptor ran req", req);
 
-  const user = jwt_decode(authTokens.access);
+  const user = jwtDecode(authTokens.access);
   const isExpired = dayjs.unix(user.exp).diff(dayjs()) < 1;
   console.log("check exp", dayjs.unix(user.exp).diff(dayjs()));
   console.log("isExpired", isExpired);

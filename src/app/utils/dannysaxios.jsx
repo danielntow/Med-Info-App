@@ -1,8 +1,12 @@
 import axios from "axios";
-import jwt_decode from "jwt-decode";
+// import jwt_decode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import dayjs from "dayjs";
+import Cookies from "js-cookie";
 
-const baseURL = "http://localhost:8000/api/";
+// const baseURL = "http://localhost:8000/api/";
+
+const baseURL = process.env.NODE_ENV === 'production' ? "https://med-info-apps.up.railway.app/api/" : 'http://localhost:8000/api/';
 
 let authTokens = localStorage.getItem("access_token")
   ? localStorage.getItem("access_token")
@@ -30,7 +34,7 @@ axiosDannyInstance.interceptors.request.use(
   //   return response
   // },
   async (req) => {
-    console.log("authTokens in instance", authTokens);
+    // console.log("authTokens in instance", authTokens);
     if (!authTokens) {
       // authRefresh = localStorage.getItem('refresh_token')
       authTokens = localStorage.getItem("access_token")
@@ -38,11 +42,13 @@ axiosDannyInstance.interceptors.request.use(
         : null;
       req.headers.Authorization = `Bearer ${authTokens}`;
     }
-    console.log("interceptor ran req", req);
+    // console.log("interceptor ran req", req);
     // console.log('authRefresh', authRefresh)
     console.log("authTokens", authTokens);
 
-    const user = jwt_decode(authTokens);
+    // const user = jwt_decode(authTokens);
+    const user = jwtDecode(authTokens);
+
     const isExpired = dayjs.unix(user.exp).diff(dayjs()) < 1;
     console.log("check exp", dayjs.unix(user.exp).diff(dayjs()));
     console.log("isExpired", isExpired);
@@ -58,7 +64,7 @@ axiosDannyInstance.interceptors.request.use(
 
       req.headers.Authorization = `Bearer ${response.data.access}`;
       refreshToken = localStorage.getItem("refresh_token");
-      console.log("refresh headers", req.headers.Authorization);
+      // console.log("refresh headers", req.headers.Authorization);
     }
 
     return req;
