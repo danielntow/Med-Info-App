@@ -68,13 +68,13 @@ const BMICalculator = () => {
 
     return (
         <Layout title="BMI Calculator" content="Calculate your Body Mass Index (BMI)">
-            <div className="min-h-screen flex flex-col justify-center items-center mx-4 mb-5">
+            <div className="min-h-screen flex flex-col justify-center items-center mx-4 mb-5 mt-5">
                 <div className="w-full max-w-md md:max-w-lg lg:max-w-2xl px-6 py-8 bg-white rounded-lg shadow-lg">
                     <h1 className="text-3xl font-semibold text-gray-800 text-center mb-6">BMI Calculator</h1>
-                    <div className="flex justify-between items-center mb-4">
+                    <div className="flex justify-between items-center mb-4 ">
                         <input
                             type="number"
-                            className="w-2/3 px-3 py-2 border rounded-md border-gray-400 focus:outline-none focus:border-blue-500"
+                            className="w-2/3 px-3 py-2 border rounded-md border-gray-400 focus:outline-none focus:border-blue-500 mr-3"
                             placeholder="Enter your height"
                             value={height}
                             onChange={(e) => setHeight(e.target.value)}
@@ -93,7 +93,7 @@ const BMICalculator = () => {
                     <div className="flex justify-between items-center mb-4">
                         <input
                             type="number"
-                            className="w-2/3 px-3 py-2 border rounded-md border-gray-400 focus:outline-none focus:border-blue-500"
+                            className="w-2/3 px-3 py-2 border rounded-md border-gray-400 focus:outline-none focus:border-blue-500 mr-3"
                             placeholder="Enter your weight"
                             value={weight}
                             onChange={(e) => setWeight(e.target.value)}
