@@ -6,36 +6,38 @@ import { clearDrug, getDrug } from "./slice/medinfoSlice.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import MyFooter from "./components/MyFooter.jsx";
 import DrugPage from "./Pages/DrugPage.jsx";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { redirect } from "react-router-dom";
 import { mymed } from "assets/mysvgs.jsx";
 import { Cookie } from "@mui/icons-material";
 import Cookies from "js-cookie";
+import AuthenticationRedirect from "./components/AuthenticationRedirect.jsx";
 
 const Layout = ({ children, title = 'Med Info App', content, type, name, description }) => {
+    const location = useLocation();
     const dispatch = useDispatch();
+
     const navigate = useNavigate()
     const [searchTerm, setSearchTerm] = useState("");
     const { drug, loading } = useSelector(state => state.medinfo);
-    // const shouldRenderDrugPage = !drug && !drug.name;
-    // const handleSearch = (term) => {
-    //     setSearchTerm(term);
-    // };
-
-
-
-    // const { drug } = useSelector((state) => state.medinfo || " ");
-    // const { loading } = useSelector(state => state.medinfo);
 
 
     let handleChange = (event) => {
         setSearchTerm(event.target.value);
 
+
     };
+
+    useEffect(() => {
+        if (location.pathname === '/get-authenticated')
+            navigate('/get-authenticated');
+
+    }, [location, navigate])
+
+
     useEffect(() => {
         if (searchTerm) {
             dispatch(getDrug(searchTerm));
-            // setSearchTerm("")
         }
 
     }, [dispatch, drug, searchTerm])
@@ -48,20 +50,6 @@ const Layout = ({ children, title = 'Med Info App', content, type, name, descrip
     }, [loading, drug, navigate, searchTerm,]);
 
 
-    // useEffect(() => {
-    //     // dispatch(getDrug(searchTerm));
-    // }, [searchTerm]);
-
-    // const [initialNavigation, setInitialNavigation] = useState(true);
-
-
-
-    // useEffect(() => {
-    //     if (drug && drug.name) {
-    //         navigate(`/${drug.name}`); // Navigate to the "/drug" route
-
-    //     }
-    // }, [drug, navigate,]);
     const username = Cookies.get('username')
     const isAuthenticated = Cookies.get('isAuthenticated')
     return (

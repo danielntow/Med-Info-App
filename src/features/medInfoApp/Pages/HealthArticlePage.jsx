@@ -1,9 +1,21 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { healthNewsData } from '../healthNews'; // Import the JSON data
 import Layout from '../Layout';
+import Cookies from 'js-cookie';
 
 const HealthArticlePage = () => {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const isAuthenticated = Cookies.get('isAuthenticated'); // Corrected
+        console.log("isAuthenticated", isAuthenticated);
+        // If not authenticated, redirect to the authentication redirect page
+        if (isAuthenticated != 'true') {
+            navigate('/get-authenticated');
+        }
+    }, [navigate]);
+
     // Get the article slug from the URL
     const { slug } = useParams();
 

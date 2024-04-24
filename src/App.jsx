@@ -22,6 +22,7 @@ import RegisterPage from 'features/redux-users/components/RegisterPage';
 import PersonalLogin from 'features/redux-users/components/PersonalLogin';
 import SignOut from 'features/redux-users/components/SignOut';
 import LoginD from 'features/redux-users/components/LoginD';
+import AuthenticationRedirect from 'features/medInfoApp/components/AuthenticationRedirect';
 
 
 function App() {
@@ -54,8 +55,8 @@ function App() {
 
                 </Route>
                 <Route path='/health-news/:slug?' element={<HealthArticlePage />} />
-                <Route path="/:drugName?" element={<DrugPage />} />
-                <Route path="*" element={<PageNotFound />} />
+
+
 
 
                 {/* authentication */}
@@ -64,7 +65,12 @@ function App() {
                 <Route path="/psignin/:slug?" element={<PersonalLogin />} />
                 <Route path="/signout" element={<SignOut />} />
                 <Route path="/login" element={<LoginD />} />
+                {/* authentiction redirect*/}
 
+
+                <Route path="/get-authenticated" element={<AuthenticationRedirect />} />
+                <Route path="/:drugName?" element={<DrugPage />} />
+                <Route path="*" element={<PageNotFound />} />
 
 
 
@@ -74,7 +80,7 @@ function App() {
             </Router>
           </QueryClientProvider>
         </HelmetProvider>
-      </div>
+      </div >
     </>
   )
 }

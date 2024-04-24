@@ -2,9 +2,12 @@ import React, { useEffect } from 'react';
 import Layout from '../Layout';
 import { NewspaperIcon } from '@heroicons/react/outline';
 import { healthNewsData } from '../healthNews'; // Import the JSON data
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link, useLocation } from 'react-router-dom'; // Import Link from react-router-dom
 
 const HealthNews = () => {
+
+    const location = useLocation();
+    console.log('locate me ', location.pathname)
     return (
         <Layout title="Health News">
             <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 max-sm:mx-1">
