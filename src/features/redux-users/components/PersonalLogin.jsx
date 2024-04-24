@@ -159,7 +159,7 @@ const PersonalLogin = ({ neee }) => {
             <input type="submit" value="Submit" className="btn success" />
           </form>
         </div>
-        <div className="mt-8 ">
+        <div className="mt-8  mb-10">
           <span className="text-#0e5b49][">new Here</span> &#128515;: {" "}
           <Link to={redirect ? `/register?redirect=${redirect}` : "/register"}>
             <span className="text-[#5c9aec] hover:text-blue-700 text-lg underline">Register</span>
