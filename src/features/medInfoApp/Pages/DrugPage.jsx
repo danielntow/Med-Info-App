@@ -28,14 +28,11 @@ const DrugPage = () => {
     };
 
 
-
-
-
     return (
         <Layout>
             {(drug && drug.name) ?
                 <div className="px-8 mx-2" id="element-to-print" ref={elementRef} >
-                    <div className="bg-sea-blue text-[#1f668a] flex flex-col justify-between mx-auto max-w-7xl">
+                    <div className=" text-[#1f668a] flex flex-col justify-between mx-auto max-w-7xl bg-sea-blue">
                         <div className="flex underline ">
                             <span className="text-8xl font-bold mt-8 mb-4 max-sm:text-4xl">{drug?.name}</span>
                             <span className="mt-[60px] max-sm:mt-[40px]">{capsule}</span>
