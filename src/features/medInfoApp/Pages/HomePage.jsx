@@ -1,15 +1,33 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Layout from '../Layout';
 import { Link } from 'react-router-dom';
 import SearchDrug from '../components/SearchDrug';
 import { useSelector } from 'react-redux';
+import html2pdf from 'html2pdf.js';
 
 const HomePage = () => {
     const { loading, error, drug } = useSelector((state) => state.medinfo);
 
+    const elementRef = useRef(null);
+
+
+
+    const generatePDF = () => {
+
+        const element = elementRef.current;
+        if (!element) {
+            console.error('Element not found.');
+            return;
+        }
+
+        html2pdf().from(element).save();
+
+
+    }
+
     return (
         <Layout>
-            <div className="mx-auto px-4 py-8 overflow-hidden max-sm:max-w-sm max-w-6xl">
+            <div className="mx-auto px-4 py-8 overflow-hidden max-sm:max-w-sm max-w-6xl" ref={elementRef} id="element-to-print">
                 <h1 className="text-4xl md:text-5xl text-center text-blue-600 font-bold mb-8"> <p>Welcome to</p><p>MedInfo App</p>  </h1>
                 <p className="text-lg  text-center text-gray-700 mb-6">Your trusted source for medical information and resources.</p>
 

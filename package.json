@@ -47,6 +47,7 @@
     "flowbite": "^2.3.0",
     "flowbite-react": "^0.7.5",
     "html-entities": "^2.5.2",
+    "html2pdf.js": "^0.10.1",
     "http-proxy-middleware": "^2.0.6",
     "js-cookie": "^3.0.5",
     "jspdf": "^2.5.1",

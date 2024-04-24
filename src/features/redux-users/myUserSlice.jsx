@@ -270,7 +270,6 @@ export const myUserSlice = createSlice({
       state.tryUser = jwtDecode(action.payload.access);
 
       Cookies.set("username", state.tryUser.username[0]);
-
       Cookies.set("isAuthenticated", state.isAuthenticated)
       Cookies.set("local_user", jwtDecode(action.payload.access));
       Cookies.set("access_token", action.payload.access);

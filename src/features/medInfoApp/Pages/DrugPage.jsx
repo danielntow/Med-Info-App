@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { drugSlice } from "../slice/medinfoSlice";
 import { getDrug } from "../slice/medinfoSlice";
@@ -6,7 +6,7 @@ import Layout from "../Layout";
 import { mymed } from "assets/mysvgs";
 import { capsule } from "assets/capsule-line";
 import { jsPDF } from "jspdf";
-
+import html2pdf from 'html2pdf.js';
 import { useNavigate, useParams } from "react-router-dom";
 // export const useAppSelector = useSelector();
 // import PillIcon from "assets/pill-icon.png"; // Example image
@@ -18,11 +18,18 @@ const DrugPage = () => {
 
     const { drug, loading, error } = useSelector((state) => state.medinfo);
 
-
-
-
+    const elementRef = useRef(null);
 
     const generatePDF = () => {
+        const element = elementRef.current;
+        if (!element) return;
+
+        html2pdf(element);
+    };
+
+
+
+    const generatePDFs = () => {
         // Create a new jsPDF instance
         const pdf = new jsPDF();
 
@@ -53,7 +60,7 @@ const DrugPage = () => {
     return (
         <Layout>
             {(drug && drug.name) ?
-                <div className="px-8 mx-2">
+                <div className="px-8 mx-2" id="element-to-print" ref={elementRef} id="element-to-print">
                     <div className="bg-sea-blue text-[#1f668a] flex flex-col justify-between mx-auto max-w-7xl">
                         <div className="flex underline ">
                             <span className="text-8xl font-bold mt-8 mb-4 max-sm:text-4xl">{drug?.name}</span>
