@@ -40,7 +40,7 @@ const About = () => {
                     </p>
                     {showEmail && (
                         <div className="bg-gray-200 p-2 rounded-md">
-                            <p className="text-gray-700 font-semibold">Email: danielntow@gmail.com</p>
+                            <p className="text-gray-700 font-semibold">Email: danielntow@gmail.com or bernardnketia51@gmail.com</p>
                         </div>
                     )}
                 </div>
